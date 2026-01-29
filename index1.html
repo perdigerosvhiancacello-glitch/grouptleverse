@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Web Layout</title>
+
+    <style>
+
+/* Dropdown */
+.dropdown-content {
+display: none;
+position: absolute;
+background-color: gray;
+min-width: 160px;
+z-index: 1;
+}
+ 
+.dropdown-content a {
+padding: 12px 16px;
+display: block;
+color: black;
+}
+ 
+.dropdown-content a:hover {
+background-color: skyblue;
+color: black;
+}
+ 
+.dropdown:hover .dropdown-content {
+display: block;
+}
+
+
+        /* Container */
+        .container {
+            display: flex;
+            width: 100%;
+        }
+
+        /* Article */
+        article {
+            padding: 20px;
+            width: 70%;
+            background-color:#FFD7BE ;
+            min-height: 300px;
+        }
+   /* Sidebar */
+        .sidebar {
+            width: 30%;
+            background: #D3D3D3;
+            padding: 20px;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .sidebar ul li a {
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            color: white;
+        }
+
+   
+        .sidebar ul li a:hover {
+            background: blue;
+            color: white;
+        }
+
+        /* Top Navigation */
+        ul.nav {
+            display: flex;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            background-color:#E6E6FA;
+        }
+
+        ul.nav li a {
+            display: block;
+            color: white;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        ul.nav li a:hover {
+            background-color: skyblue;
+            color: black;
+        }
+
+        /* Header */
+        header {
+            background-color: #F5F5DC;
+            padding: 5px;
+            text-align: center;
+            font-size: 35px;
+            color: brown;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #F2F2F2;
+            padding: 5px;
+            text-align: center;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>SDIHS</h1>
+    <h2 style="font-size:30px;">Tlevers:LEARN EASY</h2>
+</header>
+
+ <!-- TOP NAVIGATION -->
+<ul class="nav">
+  <li class="dropdown">
+<ul>   <a href="#">Home</a>
+    <div class="dropdown-content">
+      <a href="#" onclick="loadContent('mission')">Mission</a>
+      <a href="#" onclick="loadContent('vission')">Vission</a>
+<a href="#" onclick="loadContent('core values')">Core Values</a>
+</ul>
+    </div>
+  </li>
+
+  <!-- ACTIVITIES DROPDOWN -->
+  <li class="dropdown">
+    <a href="#">Activities</a>
+    <div class="dropdown-content">
+      <a href="#" onclick="loadContent('activity1')">Activity 1</a>
+      <a href="#" onclick="loadContent('activity2')">Activity 2</a>
+<a href="#" onclick="loadContent('activity3')">Activity 3</a>
+    </div>
+  </li>
+
+  <!-- ASSESSMENT DROPDOWN -->
+  <li class="dropdown">
+    <a href="#">Assessment</a>
+    <div class="dropdown-content">
+      <a href="#" onclick="loadContent('assessment1')">Assessment 1</a>
+      <a href="#" onclick="loadContent('assessment2')">Assessment 2</a>
+  <a href="#" onclick="loadContent('assessment3')">Assessment 3</a>
+    </div>
+  </li>
+
+  <!-- REFERENCES DROPDOWN -->
+  <li class="dropdown">
+    <a href="#">References</a>
+    <div class="dropdown-content">
+      <a href="#" onclick="loadContent('reference')">Reference1</a>
+<a href="#" onclick="loadContent('reference2')">Reference2</a>
+    </div>
+  </li>
+
+  <!-- ABOUT DROPDOWN -->
+  <li class="dropdown">
+    <a href="#">About</a>
+    <div class="dropdown-content">
+      <a href="#" onclick="loadContent('about')">Group Members</a>
+    </div>
+  </li>
+</ul>
+
+
+        <!-- SIDEBAR -->
+        <div class="container">
+<aside class="sidebar">
+            <ul>
+                <li><a href="#" onclick="loadContent('content')">Content</a></li>
+                <li><a href="#" onclick="loadContent('performance')">Performance Standard</a></li>
+                <li><a href="#" onclick="loadContent('standard')">Content Standard</a></li>
+                <li><a href="#" onclick="loadContent('competencies')">Learning Competencies</a></li>
+                <li><a href="#" onclick="loadContent('objectives')">Objectives</a></li>
+</ul>
+</aside>
+
+          
+        </nav>
+
+        <!-- MAIN CONTENT -->
+        <article id="content">
+            <h1>Batang Santo likas na matalino, mabait, at aktibo!</h1>
+            <h2>WELCOME TO OUR PERFORMANCE</h2>
+        </article>
+
+    </div>
+</section>
+
+<footer>
+    <p>© 2025 SDIHS</p>
+</footer>
+
+<script>
+function loadContent(section) {
+
+    const content = document.getElementById("content");
+
+    if (section === "about") {
+        content.innerHTML = `
+            <h2>About</h2>
+            <p><strong>About Us: Grade 10 Student from section Pulag,Who bring ICT to live! Representing the group members of TLE Verse! LEARN EASY! <br>Group Members:</strong></p>
+            <ul>
+                <li>
+                    <a href="" target="_blank">
+                        John Paul Monreal
+                    </a>
+                </li>
+                <li>
+                    <a href="" target="_blank">
+                        Vhianca P. Cello
+                    </a>
+                </li>
+                <li>
+                    <a href="" target="_blank">
+                        Keren Moncada 
+                    </a>
+                </li>
+                <li>
+                    <a href="" target="_blank">
+                        Hanna Eustaqio
+                    </a>
+                </li>
+                <li>
+                    <a href="" target="_blank">
+                        Angela Lozano
+                    </a>
+                </li>
+            </ul>
+        `;
+    }
+else if (section === 'mission') {
+        content.innerHTML = `
+            <h1 style="color:orange; font-family:'Curlz MT'; font-size:200%;border:5px solid black"><i>Mission</i></h1>
+
+<p style="font-size:200%"><small><strong>We dream of Filipinos who passionately love their country and whose values and competencies enable them to realize their full potential and contribute meaningfully to building the nation. As a learner-centered public institution, the Department of Education continuously improves itself to better serve its stakeholders.<strong></small></b></h3>
+            <p>
+                
+        `;
+    }
+
+else if (section === 'vission') {
+        content.innerHTML = `
+           <h1 style="color: violet; border:5px solid black"><i>Vision</i></h1>
+        
+
+<p><strong>To protect and promote the right of every Filipino to quality, equitable, culture-based, and complete basic education where:<strong><br>
+
+<p><i>Students learn in a child-friendly, gender-sensitive, safe, and motivating environment</i><br>
+
+<br><i>Teachers facilitate learning and constantly nurture every learner</i><br>
+
+<br><i>Administrators and staff, as stewards of the institution, ensure an enabling and supportive environment for effective learning to happen</i><br>
+
+<br><i>Family, community, and other stakeholders are actively engaged and share responsibility for developing life-long learners.</i><br></p></b></h3>
+            <p>
+                
+        `;
+    }
+else if (section === 'core values') {
+        content.innerHTML = `
+            <h1 style="color:orange; font-family:'Curlz MT'; font-size:250%;border:5px solid black"><i>Core Values</i></h1>
+            
+<p><h1 <ins>MAKA-Diyos <br>MAKA-Tao <br>MAKA-Kalikasan <br>MAKA-Bansa</p></ins>
+ </b></h3>
+            <p>
+                
+        `;
+    }
+
+else if (section === 'activity1') {
+        content.innerHTML = `
+            <h2>ACTIVITY1: MATCHING TYPE 1<h2>
+            <h3><b>
+
+Directions: Match the descriptions in Column A with the terms in Column B. <br>
+<br>
+
+COLUMN: A.<br>
+1. It is a type of tourism in which the visitors essential motivation is to learn, discover, experience, and consume the cultural attractions and products offered by a tourist destination.
+<br>
+2. This includes the active pursuit of unique and memorable eating and drinking experiences, as well as agritourist experiences that connect what is being grown and produced in an area to what is being prepared and enjoyed by the locals.
+<br>
+3. It is a type of travel where individuals travel to another country for medical treatment.
+<br>
+4. It is a type of tourism that involves traveling to places associated with death and suffering.
+<br>
+5. This involves residents of a country traveling within the same country.
+<br>
+<br>
+
+COLUMN: B.<br>
+a. Culinary Tourism<br>
+b. Cultural Tourism<br>
+c. Domestic Tourism<br>
+d. Medical Tourism<br>
+e. Dark Tourism </b></h3>
+            <p>
+                
+        `;
+    }
+
+else if (section === 'activity2') {
+        content.innerHTML = `
+            <h2>ACTIVITY2: PROBLEM SOLVING  <h2>
+            <h3><b>Building Blocks Problem Solve!
+Problem: A recipe for chocolate chip cookies calls for 2 cups of flour, 1 cup of sugar, and 1 / 2 cup of chocolate chips. <br>If you want to make a double batch of cookies, how much flour, sugar, and chocolate chips will you need? Show your solutions.<br>
+<br>
+
+Ingredients:<br>
+Flour: 2 cups<br>
+Sugar: 1 cup<br>
+Chocolate chips: 1/2 cup</b></h3>
+            <p>
+                
+        `;
+    }
+else if (section === 'activity3') {
+        content.innerHTML = `
+            <h2>ACTIVITY3: MATCHING TYPE 2<h2>
+            <h3><b>
+Directions: Match the equivalent of measurement in column A with the measurements in column B.<br>
+<br>
+
+A.
+1/4 cup is equivalent to __________<br>
+1 cup is equivalent to __________<br>
+1 tablespoon is equivalent to __________<br>
+3 tablespoon is equivalent to __________<br>
+1000 grams is equivalent to __________<br>
+<br>
+B.
+a. 1 kilogram<br>
+b. 3 teaspoon<br>
+c. 4 tablespoon<br>
+d. 1 ounce<br>
+e. 8 ounces</b></h3>
+            <p>
+                
+        `;
+    }
+
+else if (section === 'assessment1') {
+        content.innerHTML = `
+            <h2>ASSESSMENT1: IDENTIFICATION<h2>
+            <h3><b>
+        <p><strong>1. Hospitality Career Spotlight (Mini Project)</strong><br>
+        Students choose one job from the hospitality, tourism, or food service industry (e.g., chef, hotel staff, tour guide).
+        They will explain the role’s responsibilities, required skills, tools used, and how current trends or challenges affect the job.
+        <br><em>Applicable Lessons:</em> Lessons 1, 2, 3
+        </p>
+
+        <p><strong>2. Plan–Prepare–Serve Food Service Simulation</strong><br>
+        Students work in groups to simulate a small food service setup such as a school canteen or café.
+        They create a simple menu, identify needed tools and equipment, explain food preparation and cooking methods,
+        and apply basic food safety practices.
+        <br><em>Applicable Lessons:</em> Lessons 3, 4, 5
+        </p>
+
+        <p><strong>3. Measure It Right! Conversion Challenge</strong><br>
+        Students solve real-life cooking scenarios involving unit conversion (e.g., cups to grams, ml to liters)
+        and adjust recipe measurements for different serving sizes. This activity may be done as a game, quiz,
+        or group challenge.
+        <br><em>Applicable Lessons:</em> Lesson 6 (with integration of Lessons 3 and 5)
+        </p>
+ 
+                
+        `;
+    }
+
+else if (section === 'assessment2') {
+        content.innerHTML = `
+            <h2>ASSESSMENT2: MULTIPLE CHOICE<h2>
+            <h3><b>
+
+1. This refers to the way and manner in which the quality of food and beverages is served to the guest appropriately and correctly.
+<br>
+A. Food service<br>
+B. Operation<br>
+C. Quality<br>
+D. Regulations<br>
+<br>
+2. Procedures and tasks involved in producing, cooking, serving, and supervising food and beverages for patrons are collectively referred to as food service operations.
+<br>
+A. Service<br>
+B. Service operating<br>
+C. Service operation<br>
+D. Operation services<br>
+<br>
+3. Businesses that cook and serve food and beverages for profit are referred to as commercial food service operations.<br>
+A. Institutional food service<br>
+B. Commercial food service<br>
+C. Service operation<br>
+D. Services standards<br>
+<br>
+4. Commonly located in large areas such as shopping malls.<br>
+A. Cafeteria<br>
+B. Canteen<br>
+C. Restaurant<br>
+D. Food court<br>
+<br>
+5. This pertains to the products which commonly do not support bacterial growth in a regular state.
+<br>
+A. Cold storage<br>
+B. Dry storage<br>
+C. Freezer<br>
+D. Refrigerator<br>
+<br>
+6. Serves military personnel on camps and bases.
+<br>
+A. Military service<br>
+B. Correctional<br>
+C. Healthcare<br>
+D. Education<br>
+<br>
+7. It refers to any substance that consists of essential elements such as protein, carbohydrate, fat, and other nutrients used by our body to grow and process energy.<br>
+A. Food<br>
+B. Beverage<br>
+C. Junk food<br>
+D. Alcohol</b></h3>
+            <p>
+                
+        `;
+    }
+
+else if (section === 'assessment3') {
+        content.innerHTML = `
+            <h2>ASSESSMENT3: SEQUENCING<h2>
+            <h3><b>Directions: Arrange the steps to follow in applying for HACCP. Number them 1 to 7 in the order given.<br>
+<br>
+<br>
+Set-up standards or limits to CCP.<br>
+<br>
+Identify or assess hazard.<br>
+<br>
+Identify critical control points.<br>
+<br>
+Establish corrective actions.<br>
+<br>
+Set-up a record keeping system.<br>
+<br>
+Set-up procedures for monitoring.<br>
+<br>
+Verify what system is working. </b></h3>
+            <p>
+                
+        `;
+    }
+
+else if (section === 'reference') {
+        content.innerHTML = `
+            <h2>REFERENCE1<h2>
+            <h3><b>TECNOLOGY AND LIVELIHOOD EDUCATION: SKILLS FOR LIFE AND CAREER (textbook of grade 7)<br>
+<br>
+authors:<br>
+Cecilia A. Caraan, MA IE <br>
+Amelia R. Lumaban, LPT<br>
+Daryl Joe C. Mercado, LPT, MAIE-HRM<br>
+Carl Kervin M. Sapungan, EdD</b></h3>
+            <p>
+                
+        `;
+    }
+
+else if (section === 'reference2') {
+        content.innerHTML = `
+            <h2>REFERENCE2<h2>
+            <h3><b>The other sources are from Google and Chatgpt App. </b></h3>
+            <p>
+                
+        `;
+    }
+
+
+else if (section === 'content') {
+        content.innerHTML = `
+            <h2> CONTENT<h2>
+            <h3><b>
+CHAPTER 1
+<br>Lesson 1: Fundamentals of Hospitality and Tourism Industry <br>
+Lesson 2: Issues, Challenge, Trends, and Innovatios in the Hospitality and Tourism Industry<br>
+<br>
+CHAPTER 2<br>
+Lesson 3:Food Preparation and Food Service Industry <br>
+Lesson 4: Food Preparation and Food Service Tools and Equipment <br>
+<br>
+CHAPTER 3<br>
+Lesson 5: Food Selection, Preparation, and Cooking <br>
+Lesson 6: Conversion of Units of Measurement 
+</b></h3>
+            <p>
+                
+        `;
+    }
+
+    else if (section === 'performance') {
+        content.innerHTML = `
+            <h2> PERFORMANCE STANDARD</h2>
+            <p> <b>
+Chapter 1<br>
+Lesson 1&2 :<br>
+- Explain the meaning and importance of hospitality and tourism.<br>
+- Identify the different sectors of the hospitality and tourism industry.<br>
+- Describe the key characteristics of the industry.<br>
+
+<br>
+Chapter 2<br>
+Lesson 3:The learner prepares and serves food according to industry standards, demonstrating basic skills in food preparation and service.<br>
+Lesson 4:The learner properly uses and maintains tools and equipment for food preparation and service.<br>
+<br>
+Chapter 3<br>
+Lesson 5 :The learner selects, prepares, and cooks food according to given standards and recipes..<br>
+Lesson 6:The learner accurately converts units of measurement used in food preparation and service.<br></b
+ </p>
+        `;
+    }
+
+   else if (section === 'standard') {
+        content.innerHTML = `
+            <h2> CONTENT STANDARD</h2>
+            <p><b>
+Chapter 1<br>
+Lesson 1 & 2<br>
+-The learner understands the concepts, principles, and practices in the hospitality and tourism industry.<br>
+<br><br>
+Chapter 2<br>
+Lesson 3<br>
+-The learner understands the principles and practices of food preparation and service in the hospitality industry.<br>
+Lesson 4<br>
+-The learner understands the use, maintenance, and safety of tools and equipment in food preparation and service.<br>
+<br>
+<br>
+Chapter 3<br>
+Lesson 5&6<br>
+- The learner understands the principles of food selection, preparation, and cooking techniques.</b></p>
+        `;
+    }
+
+else if (section === 'competencies') {
+        content.innerHTML = `
+            <h2>LEARNING COMPETENCIES</h2>
+            <p><b>
+
+Chapter 1  <br>
+Lesson 1 & 2: <br>
+    - Discuss the meaning and importance of hospitality and tourism.<br>
+    - Identify and describe the different sectors of the hospitality and tourism industry.<br>
+   - Explain the key characteristics of the industry.<br>
+<br>
+Chapter 2<br>
+Lesson 3:<br>
+  - Identify and describe different types of food service methods.<br>
+   - Demonstrate basic food preparation techniques.<br>
+Lesson 4:   <br>
+   - Identify and classify tools and equipment used in food preparation and service.<br>
+     - Explain the proper use and maintenance of food service equipment.<br>
+      - Demonstrate safe handling of tools and equipment.<br>
+
+<br>
+Chapter 3<br>
+Lesson 5: <br>Apply principles of food selection and preparation.<br>
+        - Prepare ingredients and cook food using appropriate methods.<br>
+        - Demonstrate proper cooking techniques and safety practices.<br>
+Lesson 6:<br>
+- Explain the importance of accurate measurement in food preparation.<br>
+  - Convert units of measurement (e.g., grams to kilograms, cups to milliliters<br>
+    - Apply conversion skills in practical food preparation tasks.</b></p>
+        `;
+    }
+
+else if (section === 'objectives') {
+        content.innerHTML = `
+            <h2>OBJECTIVE</h2>
+            <p><b>
+Chapter 1<br>
+Lesson 1 &2: <br>  
+ - Explain the meaning and importance of hospitality and tourism.<br>
+        - Identify the different sectors of the hospitality and tourism industry.<br>
+        - Describe the key characteristics of the industry.
+<br>
+<br>
+Chapter 2<br>
+Lesson 3: <br>    
+ - Explain the importance of food preparation and service in the hospitality industry.<br>
+  - Identify different types of food service methods.<br>
+  - Demonstrate basic food preparation techniques.<br>
+Lesson 4:  <br>
+  - Identify and classify tools and equipment used in food preparation and service. <br>
+ -Explain the proper use and maintenance of food service equipment. <br>  - Demonstrate safe handling of tools and equipment.<br><br>
+Chapter 3<br>
+Lesson 5 & 6: <br>
+- Explain the importance of accurate measurement in food preparation.<br>
+  - Convert units of measurement (e.g., grams to kilograms, cups to milliliters).<br>
+  - Apply conversion skills in practical food preparation tasks.</b></p>
+        `;
+    }
+
+}
+
+</script>
+
+</body>
+</html>
+
+    
