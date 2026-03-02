@@ -1,112 +1,328 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <title>Web Layout</title>
+<html lang="en">
+<head> 
+<meta charset="UTF-8">
+<title>SDIHS | TLEvers</title>
 
-    <style>
+<style>
+<script>
+function showAnswers(answerId) {
+    document.getElementById(answerId).style.display = "block";
+}
+</script>
 
-/* Dropdown */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: #FFF0F5;
+}
+
+/* HEADER */
+header {
+    background: linear-gradient(to right, #50C878, #228B22);
+    color: white;
+    text-align: center;
+    padding: 25px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 45px;
+}
+
+header h2 {
+    margin: 5px 0 0;
+    font-weight: normal;
+}
+
+/* NAVIGATION */
+.nav {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    background-color: #98FB98;
+    margin: 0;
+    padding: 0;
+}
+
+.nav li {
+    position: relative;
+}
+
+.nav a {
+    display: block;
+    padding: 14px 20px;
+    text-decoration: none;
+    color: #8B004F;
+    font-weight: bold;
+}
+
+.nav a:hover {
+    background-color: #FF69B4;
+    color: white;
+    border-radius: 20px;
+}
+
+/* DROPDOWN */
 .dropdown-content {
-display: none;
-position: absolute;
-background-color: gray;
-min-width: 160px;
-z-index: 1;
+    display: none;
+    position: absolute;
+    background-color: #50C878;
+    min-width: 160px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
- 
+
 .dropdown-content a {
-padding: 12px 16px;
-display: block;
-color: black;
+    padding: 10px;
 }
- 
-.dropdown-content a:hover {
-background-color: skyblue;
-color: black;
-}
- 
+
 .dropdown:hover .dropdown-content {
-display: block;
+    display: block;
 }
 
+/* LAYOUT */
+.container {
+    display: flex;
+    margin: 20px;
+}
 
-        /* Container */
-        .container {
-            display: flex;
-            width: 100%;
-        }
+/* SIDEBAR */
+.sidebar {
+    width: 25%;
+    background-color: #32CD32;
+    padding: 20px;
+    border-radius: 20px;
+}
 
-        /* Article */
-        article {
-            padding: 20px;
-            width: 70%;
-            background-color:#FFD7BE ;
-            min-height: 300px;
-        }
-   /* Sidebar */
-        .sidebar {
-            width: 30%;
-            background: #D3D3D3;
-            padding: 20px;
-        }
+.sidebar a {
+    display: block;
+    padding: 12px;
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: #8B004F;
+    background-color: #C1E1C1;
+    border-radius: 15px;
+    text-align: center;
+    font-weight: bold;
+}
 
-        .sidebar ul {
-            list-style-type: none;
-            padding: 0;
-        }
+.sidebar a:hover {
+    background-color: #FF69B4;
+    color: white;
+}
 
-        .sidebar ul li a {
-            display: block;
-            padding: 10px;
-            text-decoration: none;
-            color: white;
-        }
+/* CONTENT */
+article {
+    width: 75%;
+    background-color: white;
+    padding: 25px;
+    margin-left: 20px;
+    border-radius: 25px;
+    box-shadow: 0 6px 10px rgba(0,0,0,0.1);
+}
 
-   
-        .sidebar ul li a:hover {
-            background: blue;
-            color: white;
-        }
+article h2 {
+    color: #8B004F;
+}
 
-        /* Top Navigation */
-        ul.nav {
-            display: flex;
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            background-color:#E6E6FA;
-        }
+/* FOOTER */
+footer {
+    background-color: #B2E6CE;
+    text-align: center;
+    padding: 12px;
+    color: #8B004F;
+    margin-top: 20px;
+}
 
-        ul.nav li a {
-            display: block;
-            color: white;
-            padding: 14px 16px;
-            text-decoration: none;
-        }
+<script>
+function checkActivity1(){
+  const answers = [
+    "knife","spoon","fork","pan","pot",
+    "plate","glass","stove","refrigerator","cutting board"
+  ];
 
-        ul.nav li a:hover {
-            background-color: skyblue;
-            color: black;
-        }
+  for(let i=1;i<=10;i++){
+    let input = document.getElementById("a"+i).value.toLowerCase();
+    let result = document.getElementById("r"+i);
 
-        /* Header */
-        header {
-            background-color: #F5F5DC;
-            padding: 5px;
-            text-align: center;
-            font-size: 35px;
-            color: brown;
-        }
+    result.innerHTML =
+      input === answers[i-1]
+        ? "<span class='correct'>Correct!</span>"
+        : "<span class='wrong'>Correct answer: "+answers[i-1]+"</span>";
+  }
+}
 
-        /* Footer */
-        footer {
-            background-color: #F2F2F2;
-            padding: 5px;
-            text-align: center;
-            color: black;
-        }
-    </style>
+function checkActivity2(){
+  const answers = ["true","true","false","true","true",
+                   "false","true","true","false","true"];
+
+  for(let i=1;i<=10;i++){
+    let selected = document.querySelector(`input[name="q${i}"]:checked`);
+    let result = document.getElementById("tf"+i);
+
+    result.innerHTML =
+      selected && selected.value === answers[i-1]
+        ? "<span class='correct'>Correct!</span>"
+        : "<span class='wrong'>Correct answer: "+answers[i-1]+"</span>";
+  }
+}
+
+function checkMatch(){
+  document.getElementById("m").innerHTML =
+    document.getElementById("m1").value === "cut"
+      ? "<span class='correct'>Correct!</span>"
+      : "<span class='wrong'>Answer: Cut</span>";
+}
+
+function cw(){
+  document.getElementById("cwr").innerHTML =
+    document.getElementById("cw").value.toLowerCase() === "pan"
+      ? "<span class='correct'>Correct!</span>"
+      : "<span class='wrong'>Answer: Pan</span>";
+}
+
+function quiz(){
+  let a = document.querySelector('input[name="q"]:checked');
+  document.getElementById("qr").innerHTML =
+    a && a.value === "hospitality"
+      ? "<span class='correct'>Correct!</span>"
+      : "<span class='wrong'>Answer: Hospitality</span>";
+}
+
+function fm(){
+  document.getElementById("fmr").innerHTML =
+    document.getElementById("fm").value.toLowerCase() === "hospitality"
+      ? "<span class='correct'>Correct!</span>"
+      : "<span class='wrong'>Correct spelling: Hospitality</span>";
+}
+
+// Activity 3 – Matching
+function checkMatch(){
+  const answers = {
+    m1:"cut",
+    m2:"stir",
+    m3:"pick",
+    m4:"fry",
+    m5:"boil",
+    m6:"serve",
+    m7:"drink",
+    m8:"cook",
+    m9:"store",
+    m10:"chop"
+  };
+
+  for(let i=1;i<=10;i++){
+    let sel = document.getElementById("m"+i).value;
+    let res = document.getElementById("r"+i);
+    res.innerHTML = sel===answers["m"+i]
+      ? "<span class='correct'>Correct!</span>"
+      : "<span class='wrong'>Correct answer: "+answers["m"+i]+"</span>";
+  }
+
+</script>
+function checkActivity1() {
+const answers = ["knife", "spoon", "fork", "pan", "pot", "plate", "glass", "stove", "refrigerator", "cutting board"];
+
+for(let i=1; i<=10; i++) {  
+    const userAnswer = document.getElementById(`a${i}`).value.trim().toLowerCase();  
+    const result = document.getElementById(`r${i}`);  
+    if(userAnswer === answers[i-1].toLowerCase()) {  
+        result.innerHTML = "✅ Correct!";  
+    } else {  
+        result.innerHTML = `❌ Wrong! Answer: ${answers[i-1]}`;  
+    }  
+}
+
+}
+
+function checkActivity2() {
+const answers = ["true", "true", "false", "true", "true"];
+
+for(let i=1; i<=5; i++) {  
+    const options = document.getElementsByName(`q${i}`);  
+    let userAnswer;  
+    options.forEach(opt => { if(opt.checked) userAnswer = opt.value; });  
+    const result = document.getElementById(`tf${i}`);  
+    if(userAnswer === answers[i-1]) {  
+        result.innerHTML = "✅ Correct!";  
+    } else {  
+        result.innerHTML = "❌ Wrong!";  
+    }  
+}
+
+}
+
+function checkMatch() {
+const answers = ["cut", "stir", "pick", "fry", "boil", "serve", "drink", "cook", "store", "chop"];
+
+for(let i=1; i<=10; i++) {  
+    const userAnswer = document.getElementById(`m${i}`).value;  
+    const result = document.getElementById(`r${i}`);  
+    if(userAnswer === answers[i-1]) {  
+        result.innerHTML = "✅ Correct!";  
+    } else {  
+        result.innerHTML = `❌ Wrong! Answer: ${answers[i-1]}`;  
+    }  
+}
+
+}
+
+function cw() {
+const answers = ["pan", "coffee", "ice cream", "bread", "banana", "carrot", "cheese", "rice", "fish", "spaghetti"];
+let resultText = "";
+
+for(let i=1; i<=10; i++) {  
+    const userAnswer = document.getElementById(`cw${i}`).value.trim().toLowerCase();  
+    if(userAnswer === answers[i-1].toLowerCase()) {  
+        resultText += `✅ ${i}: Correct!<br>`;  
+    } else {  
+        resultText += `❌ ${i}: Wrong! Answer: ${answers[i-1]}<br>`;  
+    }  
+}  
+  
+document.getElementById("cwr").innerHTML = resultText;
+
+}
+
+function quiz() {
+const answers = ["hospitality","pan","farm","wheat","ice cream","orange","cow","rice","banana","spaghetti"];
+let resultText = "";
+
+for(let i=1; i<=10; i++) {  
+    const options = document.getElementsByName(`q${i}`);  
+    let userAnswer;  
+    options.forEach(opt => { if(opt.checked) userAnswer = opt.value; });  
+    if(userAnswer === answers[i-1]) {  
+        resultText += `✅ ${i}: Correct!<br>`;  
+    } else {  
+        resultText += `❌ ${i}: Wrong! Answer: ${answers[i-1]}<br>`;  
+    }  
+}  
+  
+document.getElementById("qr").innerHTML = resultText;
+
+}
+
+function fm() {
+const answers = ["hospitality","restaurant","recipe","vegetable","banana","carrot","chicken","tomato","spaghetti","ice cream"];
+let resultText = "";
+
+for(let i=1; i<=10; i++) {  
+    const userAnswer = document.getElementById(`fm${i}`).value.trim().toLowerCase();  
+    if(userAnswer === answers[i-1].toLowerCase()) {  
+        resultText += `✅ ${i}: Correct!<br>`;  
+    } else {  
+        resultText += `❌ ${i}: Wrong! Answer: ${answers[i-1]}<br>`;  
+    }  
+}  
+  
+document.getElementById("fmr").innerHTML = resultText;
+
+}
+</style>
 </head>
+
 
 <body>
 
@@ -270,185 +486,210 @@ else if (section === 'core values') {
                 
         `;
     }
+if(section==="activity1"){
+content.innerHTML=`
+<h2>Activity 1 – Flip Card (1–10)</h2>
 
-else if (section === 'activity1') {
-        content.innerHTML = `
-            <h2>ACTIVITY1: MATCHING TYPE 1<h2>
-            <h3><b>
+<p>1. Tool used to cut food</p><input id="a1"><p id="r1"></p>
+<p>2. Tool used to stir food</p><input id="a2"><p id="r2"></p>
+<p>3. Tool used to pick food</p><input id="a3"><p id="r3"></p>
+<p>4. Tool used to fry food</p><input id="a4"><p id="r4"></p>
+<p>5. Tool used to boil food</p><input id="a5"><p id="r5"></p>
+<p>6. Used to place food</p><input id="a6"><p id="r6"></p>
+<p>7. Used to drink water</p><input id="a7"><p id="r7"></p>
+<p>8. Used to cook food</p><input id="a8"><p id="r8"></p>
+<p>9. Stores cold food</p><input id="a9"><p id="r9"></p>
+<p>10. Used to chop food</p><input id="a10"><p id="r10"></p>
 
-Directions: Match the descriptions in Column A with the terms in Column B. <br>
-<br>
+<button onclick="checkActivity1()">Submit</button>
+`;
+}
 
-COLUMN: A.<br>
-1. It is a type of tourism in which the visitors essential motivation is to learn, discover, experience, and consume the cultural attractions and products offered by a tourist destination.
-<br>
-2. This includes the active pursuit of unique and memorable eating and drinking experiences, as well as agritourist experiences that connect what is being grown and produced in an area to what is being prepared and enjoyed by the locals.
-<br>
-3. It is a type of travel where individuals travel to another country for medical treatment.
-<br>
-4. It is a type of tourism that involves traveling to places associated with death and suffering.
-<br>
-5. This involves residents of a country traveling within the same country.
-<br>
-<br>
+if(section==="activity2"){
+content.innerHTML=`
+<h2>Activity 2 – True or False (1–10)</h2>
 
-COLUMN: B.<br>
-a. Culinary Tourism<br>
-b. Cultural Tourism<br>
-c. Domestic Tourism<br>
-d. Medical Tourism<br>
-e. Dark Tourism </b></h3>
-            <p>
-                
-        `;
-    }
+<p>1. Food safety is important</p>
+<input type="radio" name="q1" value="true">True
+<input type="radio" name="q1" value="false">False
+<p id="tf1"></p>
 
-else if (section === 'activity2') {
-        content.innerHTML = `
-            <h2>ACTIVITY2: PROBLEM SOLVING  <h2>
-            <h3><b>Building Blocks Problem Solve!
-Problem: A recipe for chocolate chip cookies calls for 2 cups of flour, 1 cup of sugar, and 1 / 2 cup of chocolate chips. <br>If you want to make a double batch of cookies, how much flour, sugar, and chocolate chips will you need? Show your solutions.<br>
-<br>
+<p>2. Knife is a kitchen tool</p>
+<input type="radio" name="q2" value="true">True
+<input type="radio" name="q2" value="false">False
+<p id="tf2"></p>
 
-Ingredients:<br>
-Flour: 2 cups<br>
-Sugar: 1 cup<br>
-Chocolate chips: 1/2 cup</b></h3>
-            <p>
-                
-        `;
-    }
-else if (section === 'activity3') {
-        content.innerHTML = `
-            <h2>ACTIVITY3: MATCHING TYPE 2<h2>
-            <h3><b>
-Directions: Match the equivalent of measurement in column A with the measurements in column B.<br>
-<br>
+<p>3. Plate is used to cook food</p>
+<input type="radio" name="q3" value="true">True
+<input type="radio" name="q3" value="false">False
+<p id="tf3"></p>
 
-A.
-1/4 cup is equivalent to __________<br>
-1 cup is equivalent to __________<br>
-1 tablespoon is equivalent to __________<br>
-3 tablespoon is equivalent to __________<br>
-1000 grams is equivalent to __________<br>
-<br>
-B.
-a. 1 kilogram<br>
-b. 3 teaspoon<br>
-c. 4 tablespoon<br>
-d. 1 ounce<br>
-e. 8 ounces</b></h3>
-            <p>
-                
-        `;
-    }
+<p>4. Hospitality serves guests</p>
+<input type="radio" name="q4" value="true">True
+<input type="radio" name="q4" value="false">False
+<p id="tf4"></p>
 
-else if (section === 'assessment1') {
-        content.innerHTML = `
-            <h2>ASSESSMENT1: IDENTIFICATION<h2>
-            <h3><b>
-        <p><strong>1. Hospitality Career Spotlight (Mini Project)</strong><br>
-        Students choose one job from the hospitality, tourism, or food service industry (e.g., chef, hotel staff, tour guide).
-        They will explain the role’s responsibilities, required skills, tools used, and how current trends or challenges affect the job.
-        <br><em>Applicable Lessons:</em> Lessons 1, 2, 3
-        </p>
+<p>5. Clean kitchen is important</p>
+<input type="radio" name="q5" value="true">True
+<input type="radio" name="q5" value="false">False
+<p id="tf5"></p>
 
-        <p><strong>2. Plan–Prepare–Serve Food Service Simulation</strong><br>
-        Students work in groups to simulate a small food service setup such as a school canteen or café.
-        They create a simple menu, identify needed tools and equipment, explain food preparation and cooking methods,
-        and apply basic food safety practices.
-        <br><em>Applicable Lessons:</em> Lessons 3, 4, 5
-        </p>
+<button onclick="checkActivity2()">Submit</button>
+`;
+}
 
-        <p><strong>3. Measure It Right! Conversion Challenge</strong><br>
-        Students solve real-life cooking scenarios involving unit conversion (e.g., cups to grams, ml to liters)
-        and adjust recipe measurements for different serving sizes. This activity may be done as a game, quiz,
-        or group challenge.
-        <br><em>Applicable Lessons:</em> Lesson 6 (with integration of Lessons 3 and 5)
-        </p>
- 
-                
-        `;
-    }
+if(section==="activity3"){
+content.innerHTML=`
+<h2>Activity 3 – Match (1–10)</h2>
 
-else if (section === 'assessment2') {
-        content.innerHTML = `
-            <h2>ASSESSMENT2: MULTIPLE CHOICE<h2>
-            <h3><b>
+<p>1. Knife →</p><select id="m1"><option></option><option value="cut">Cut</option><option value="cook">Cook</option></select><p id="r1"></p>
+<p>2. Spoon →</p><select id="m2"><option></option><option value="stir">Stir</option><option value="cut">Cut</option></select><p id="r2"></p>
+<p>3. Fork →</p><select id="m3"><option></option><option value="pick">Pick</option><option value="cook">Cook</option></select><p id="r3"></p>
+<p>4. Pan →</p><select id="m4"><option></option><option value="fry">Fry</option><option value="drink">Drink</option></select><p id="r4"></p>
+<p>5. Pot →</p><select id="m5"><option></option><option value="boil">Boil</option><option value="cut">Cut</option></select><p id="r5"></p>
+<p>6. Plate →</p><select id="m6"><option></option><option value="serve">Serve</option><option value="cook">Cook</option></select><p id="r6"></p>
+<p>7. Glass →</p><select id="m7"><option></option><option value="drink">Drink</option><option value="cut">Cut</option></select><p id="r7"></p>
+<p>8. Stove →</p><select id="m8"><option></option><option value="cook">Cook</option><option value="serve">Serve</option></select><p id="r8"></p>
+<p>9. Refrigerator →</p><select id="m9"><option></option><option value="store">Store</option><option value="cook">Cook</option></select><p id="r9"></p>
+<p>10. Cutting Board →</p><select id="m10"><option></option><option value="chop">Chop</option><option value="drink">Drink</option></select><p id="r10"></p>
 
-1. This refers to the way and manner in which the quality of food and beverages is served to the guest appropriately and correctly.
-<br>
-A. Food service<br>
-B. Operation<br>
-C. Quality<br>
-D. Regulations<br>
-<br>
-2. Procedures and tasks involved in producing, cooking, serving, and supervising food and beverages for patrons are collectively referred to as food service operations.
-<br>
-A. Service<br>
-B. Service operating<br>
-C. Service operation<br>
-D. Operation services<br>
-<br>
-3. Businesses that cook and serve food and beverages for profit are referred to as commercial food service operations.<br>
-A. Institutional food service<br>
-B. Commercial food service<br>
-C. Service operation<br>
-D. Services standards<br>
-<br>
-4. Commonly located in large areas such as shopping malls.<br>
-A. Cafeteria<br>
-B. Canteen<br>
-C. Restaurant<br>
-D. Food court<br>
-<br>
-5. This pertains to the products which commonly do not support bacterial growth in a regular state.
-<br>
-A. Cold storage<br>
-B. Dry storage<br>
-C. Freezer<br>
-D. Refrigerator<br>
-<br>
-6. Serves military personnel on camps and bases.
-<br>
-A. Military service<br>
-B. Correctional<br>
-C. Healthcare<br>
-D. Education<br>
-<br>
-7. It refers to any substance that consists of essential elements such as protein, carbohydrate, fat, and other nutrients used by our body to grow and process energy.<br>
-A. Food<br>
-B. Beverage<br>
-C. Junk food<br>
-D. Alcohol</b></h3>
-            <p>
-                
-        `;
-    }
+<button onclick="checkMatch()">Submit</button>
+`;
+}
 
-else if (section === 'assessment3') {
-        content.innerHTML = `
-            <h2>ASSESSMENT3: SEQUENCING<h2>
-            <h3><b>Directions: Arrange the steps to follow in applying for HACCP. Number them 1 to 7 in the order given.<br>
-<br>
-<br>
-Set-up standards or limits to CCP.<br>
-<br>
-Identify or assess hazard.<br>
-<br>
-Identify critical control points.<br>
-<br>
-Establish corrective actions.<br>
-<br>
-Set-up a record keeping system.<br>
-<br>
-Set-up procedures for monitoring.<br>
-<br>
-Verify what system is working. </b></h3>
-            <p>
-                
-        `;
-    }
+
+if(section==="assessment1"){
+content.innerHTML=`
+<h2>Assessment 1 – Crossword</h2>
+
+1. Tool for cooking food<br>  
+<input id="cw1"><br><br>  
+
+2. Hot drink made from beans<br>  
+<input id="cw2"><br><br>  
+
+3. Sweet frozen dessert<br>  
+<input id="cw3"><br><br>  
+
+4. Round bread made from wheat<br>  
+<input id="cw4"><br><br>  
+
+5. Fruit that is yellow and long<br>  
+<input id="cw5"><br><br>  
+
+6. Vegetable that is orange<br>  
+<input id="cw6"><br><br>  
+
+7. Dairy product made from milk<br>  
+<input id="cw7"><br><br>  
+
+8. Grain used to make rice dishes<br>  
+<input id="cw8"><br><br>  
+
+9. Fish often eaten raw<br>  
+<input id="cw9"><br><br>  
+
+10. Italian pasta dish<br>  
+<input id="cw10"><br><br>  
+
+<button onclick="cw()">Submit</button>  
+<p id="cwr"></p>  
+`;
+
+}
+
+if(section==="assessment2"){
+content.innerHTML=`
+<h2>Assessment 2 – Quiz</h2>
+
+1. What industry serves guests?<br>  
+<input type="radio" name="q1" value="hospitality">Hospitality<br>  
+<input type="radio" name="q1" value="farming">Farming<br><br>  
+
+2. What do chefs use to cook?<br>  
+<input type="radio" name="q2" value="pan">Pan<br>  
+<input type="radio" name="q2" value="spoon">Spoon<br><br>  
+
+3. Where do cows live?<br>  
+<input type="radio" name="q3" value="farm">Farm<br>  
+<input type="radio" name="q3" value="restaurant">Restaurant<br><br>  
+
+4. Main ingredient in bread?<br>  
+<input type="radio" name="q4" value="wheat">Wheat<br>  
+<input type="radio" name="q4" value="apple">Apple<br><br>  
+
+5. Frozen water dessert?<br>  
+<input type="radio" name="q5" value="ice cream">Ice cream<br>  
+<input type="radio" name="q5" value="coffee">Coffee<br><br>  
+
+6. Color of a carrot?<br>  
+<input type="radio" name="q6" value="orange">Orange<br>  
+<input type="radio" name="q6" value="green">Green<br><br>  
+
+7. Where does milk come from?<br>  
+<input type="radio" name="q7" value="cow">Cow<br>  
+<input type="radio" name="q7" value="chicken">Chicken<br><br>  
+
+8. What is sushi made from?<br>  
+<input type="radio" name="q8" value="rice">Rice<br>  
+<input type="radio" name="q8" value="bread">Bread<br><br>  
+
+9. Fruit that is yellow and curved?<br>  
+<input type="radio" name="q9" value="banana">Banana<br>  
+<input type="radio" name="q9" value="apple">Apple<br><br>  
+
+10. Italian dish made of pasta?<br>  
+<input type="radio" name="q10" value="spaghetti">Spaghetti<br>  
+<input type="radio" name="q10" value="sushi">Sushi<br><br>  
+
+<button onclick="quiz()">Submit</button>  
+<p id="qr"></p>  
+`;
+
+}
+
+if(section==="assessment3"){
+content.innerHTML=`
+<h2>Assessment 3 – Find the Mistake</h2>
+
+1. Hospitallity<br>  
+<input id="fm1"><br><br>  
+
+2. Restuarant<br>  
+<input id="fm2"><br><br>  
+
+3. Receipe<br>  
+<input id="fm3"><br><br>  
+
+4. Vegetabel<br>  
+<input id="fm4"><br><br>  
+
+5. Bananna<br>  
+<input id="fm5"><br><br>  
+
+6. Carrotte<br>  
+<input id="fm6"><br><br>  
+
+7. Chiken<br>  
+<input id="fm7"><br><br>  
+
+8. Tomatto<br>  
+<input id="fm8"><br><br>  
+
+9. Spagetti<br>  
+<input id="fm9"><br><br>  
+
+10. Icecreem<br>  
+<input id="fm10"><br><br>  
+
+<button onclick="fm()">Submit</button>  
+<p id="fmr"></p>  
+`;
+
+}
+
+
+
 
 else if (section === 'reference') {
         content.innerHTML = `
@@ -480,16 +721,40 @@ else if (section === 'content') {
             <h2> CONTENT<h2>
             <h3><b>
 CHAPTER 1
-<br>Lesson 1: Fundamentals of Hospitality and Tourism Industry <br>
-Lesson 2: Issues, Challenge, Trends, and Innovatios in the Hospitality and Tourism Industry<br>
 <br>
+Lesson 1: Fundamentals of Hospitality and Tourism Industry<br>
+
+In this lesson, students learn how hospitality and tourism work together as an industry. The focus is on how people are served and taken care of, especially guests, visitors, and customers. Students understand the roles of workers in hotels, restaurants, travel services, and tourist attractions. Emphasis is placed on proper behavior, good attitude, and respect when dealing with guests. This lesson also highlights the importance of teamwork and responsibility because hospitality and tourism services require cooperation among workers to give guests a positive experience.
+<br>
+<br>
+
+Lesson 2: Issues, Challenges, Trends, and Innovations in the Hospitality and Tourism Industry<br>
+
+This lesson discusses the different problems and situations faced by the hospitality and tourism industry. Students learn how issues like cleanliness, customer complaints, safety, and environmental care affect services. The lesson also explains how the industry adapts to changes, such as new customer needs and the use of technology. Students are introduced to current trends like online reservations, improved customer service, and eco-friendly practices. The focus is on how innovation helps the industry improve services and overcome challenges.
+<br><br>
+
 CHAPTER 2<br>
-Lesson 3:Food Preparation and Food Service Industry <br>
-Lesson 4: Food Preparation and Food Service Tools and Equipment <br>
+
+Lesson 3: Food Preparation and Food Service Industry<br>
+
+In this lesson, students explore how food is prepared and served in different food service settings. The discussion includes the proper flow of work from preparation to serving food. Students learn the importance of cleanliness, proper handwashing, and safe food handling to avoid food-related problems. The lesson also emphasizes discipline, cooperation, and following rules in the kitchen. Students understand that good food service is not only about taste but also about safety and proper presentation.
+<br><br>
+
+Lesson 4: Food Preparation and Food Service Tools and Equipment<br>
+
+This lesson focuses on the common tools and equipment used in food preparation and food service. Students learn how each tool is used correctly and safely in the kitchen. The discussion includes proper handling to avoid accidents and correct cleaning after use. Students are also taught the importance of storing tools and equipment properly to maintain cleanliness and order in the kitchen. This lesson helps students develop responsibility and awareness when using kitchen tools.<br><br>
+
+CHAPTER 5<br>
+
+Lesson 5: Food Selection, Preparation, and Cooking
 <br>
-CHAPTER 3<br>
-Lesson 5: Food Selection, Preparation, and Cooking <br>
-Lesson 6: Conversion of Units of Measurement 
+This lesson teaches students how to choose ingredients properly and prepare them before cooking. The discussion includes checking food quality, washing ingredients, and preparing them according to the recipe. Students also learn basic cooking methods and the importance of following correct procedures. Emphasis is given to safety, cleanliness, and proper timing during cooking. The lesson helps students understand that careful preparation leads to better and safer food.
+<br><br>
+
+
+Lesson 6: Conversion of Units of Measurement<br>
+
+In this lesson, students practice using and converting units of measurement needed in food preparation. The discussion focuses on measuring ingredients correctly and converting units when needed in recipes. Students learn why accuracy is important to achieve the desired result in cooking. The lesson also helps students develop basic math skills that are useful in the kitchen. Through this lesson, students understand that correct measurement ensures consistency and prevents mistakes in food preparation. 
 </b></h3>
             <p>
                 
