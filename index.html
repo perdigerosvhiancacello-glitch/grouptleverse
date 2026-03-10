@@ -135,191 +135,6 @@ footer {
     margin-top: 20px;
 }
 
-<script>
-function checkActivity1(){
-  const answers = [
-    "knife","spoon","fork","pan","pot",
-    "plate","glass","stove","refrigerator","cutting board"
-  ];
-
-  for(let i=1;i<=10;i++){
-    let input = document.getElementById("a"+i).value.toLowerCase();
-    let result = document.getElementById("r"+i);
-
-    result.innerHTML =
-      input === answers[i-1]
-        ? "<span class='correct'>Correct!</span>"
-        : "<span class='wrong'>Correct answer: "+answers[i-1]+"</span>";
-  }
-}
-
-function checkActivity2(){
-  const answers = ["true","true","false","true","true",
-                   "false","true","true","false","true"];
-
-  for(let i=1;i<=10;i++){
-    let selected = document.querySelector(`input[name="q${i}"]:checked`);
-    let result = document.getElementById("tf"+i);
-
-    result.innerHTML =
-      selected && selected.value === answers[i-1]
-        ? "<span class='correct'>Correct!</span>"
-        : "<span class='wrong'>Correct answer: "+answers[i-1]+"</span>";
-  }
-}
-
-function checkMatch(){
-  document.getElementById("m").innerHTML =
-    document.getElementById("m1").value === "cut"
-      ? "<span class='correct'>Correct!</span>"
-      : "<span class='wrong'>Answer: Cut</span>";
-}
-
-function cw(){
-  document.getElementById("cwr").innerHTML =
-    document.getElementById("cw").value.toLowerCase() === "pan"
-      ? "<span class='correct'>Correct!</span>"
-      : "<span class='wrong'>Answer: Pan</span>";
-}
-
-function quiz(){
-  let a = document.querySelector('input[name="q"]:checked');
-  document.getElementById("qr").innerHTML =
-    a && a.value === "hospitality"
-      ? "<span class='correct'>Correct!</span>"
-      : "<span class='wrong'>Answer: Hospitality</span>";
-}
-
-function fm(){
-  document.getElementById("fmr").innerHTML =
-    document.getElementById("fm").value.toLowerCase() === "hospitality"
-      ? "<span class='correct'>Correct!</span>"
-      : "<span class='wrong'>Correct spelling: Hospitality</span>";
-}
-
-// Activity 3 – Matching
-function checkMatch(){
-  const answers = {
-    m1:"cut",
-    m2:"stir",
-    m3:"pick",
-    m4:"fry",
-    m5:"boil",
-    m6:"serve",
-    m7:"drink",
-    m8:"cook",
-    m9:"store",
-    m10:"chop"
-  };
-
-  for(let i=1;i<=10;i++){
-    let sel = document.getElementById("m"+i).value;
-    let res = document.getElementById("r"+i);
-    res.innerHTML = sel===answers["m"+i]
-      ? "<span class='correct'>Correct!</span>"
-      : "<span class='wrong'>Correct answer: "+answers["m"+i]+"</span>";
-  }
-
-</script>
-function checkActivity1() {
-const answers = ["knife", "spoon", "fork", "pan", "pot", "plate", "glass", "stove", "refrigerator", "cutting board"];
-
-for(let i=1; i<=10; i++) {  
-    const userAnswer = document.getElementById(`a${i}`).value.trim().toLowerCase();  
-    const result = document.getElementById(`r${i}`);  
-    if(userAnswer === answers[i-1].toLowerCase()) {  
-        result.innerHTML = "✅ Correct!";  
-    } else {  
-        result.innerHTML = `❌ Wrong! Answer: ${answers[i-1]}`;  
-    }  
-}
-
-}
-
-function checkActivity2() {
-const answers = ["true", "true", "false", "true", "true"];
-
-for(let i=1; i<=5; i++) {  
-    const options = document.getElementsByName(`q${i}`);  
-    let userAnswer;  
-    options.forEach(opt => { if(opt.checked) userAnswer = opt.value; });  
-    const result = document.getElementById(`tf${i}`);  
-    if(userAnswer === answers[i-1]) {  
-        result.innerHTML = "✅ Correct!";  
-    } else {  
-        result.innerHTML = "❌ Wrong!";  
-    }  
-}
-
-}
-
-function checkMatch() {
-const answers = ["cut", "stir", "pick", "fry", "boil", "serve", "drink", "cook", "store", "chop"];
-
-for(let i=1; i<=10; i++) {  
-    const userAnswer = document.getElementById(`m${i}`).value;  
-    const result = document.getElementById(`r${i}`);  
-    if(userAnswer === answers[i-1]) {  
-        result.innerHTML = "✅ Correct!";  
-    } else {  
-        result.innerHTML = `❌ Wrong! Answer: ${answers[i-1]}`;  
-    }  
-}
-
-}
-
-function cw() {
-const answers = ["pan", "coffee", "ice cream", "bread", "banana", "carrot", "cheese", "rice", "fish", "spaghetti"];
-let resultText = "";
-
-for(let i=1; i<=10; i++) {  
-    const userAnswer = document.getElementById(`cw${i}`).value.trim().toLowerCase();  
-    if(userAnswer === answers[i-1].toLowerCase()) {  
-        resultText += `✅ ${i}: Correct!<br>`;  
-    } else {  
-        resultText += `❌ ${i}: Wrong! Answer: ${answers[i-1]}<br>`;  
-    }  
-}  
-  
-document.getElementById("cwr").innerHTML = resultText;
-
-}
-
-function quiz() {
-const answers = ["hospitality","pan","farm","wheat","ice cream","orange","cow","rice","banana","spaghetti"];
-let resultText = "";
-
-for(let i=1; i<=10; i++) {  
-    const options = document.getElementsByName(`q${i}`);  
-    let userAnswer;  
-    options.forEach(opt => { if(opt.checked) userAnswer = opt.value; });  
-    if(userAnswer === answers[i-1]) {  
-        resultText += `✅ ${i}: Correct!<br>`;  
-    } else {  
-        resultText += `❌ ${i}: Wrong! Answer: ${answers[i-1]}<br>`;  
-    }  
-}  
-  
-document.getElementById("qr").innerHTML = resultText;
-
-}
-
-function fm() {
-const answers = ["hospitality","restaurant","recipe","vegetable","banana","carrot","chicken","tomato","spaghetti","ice cream"];
-let resultText = "";
-
-for(let i=1; i<=10; i++) {  
-    const userAnswer = document.getElementById(`fm${i}`).value.trim().toLowerCase();  
-    if(userAnswer === answers[i-1].toLowerCase()) {  
-        resultText += `✅ ${i}: Correct!<br>`;  
-    } else {  
-        resultText += `❌ ${i}: Wrong! Answer: ${answers[i-1]}<br>`;  
-    }  
-}  
-  
-document.getElementById("fmr").innerHTML = resultText;
-
-}
 </style>
 </head>
 
@@ -392,6 +207,7 @@ document.getElementById("fmr").innerHTML = resultText;
                 <li><a href="#" onclick="loadContent('competencies')">Learning Competencies</a></li>
                 <li><a href="#" onclick="loadContent('objectives')">Objectives</a></li>
 </ul>
+
 </aside>
 
           
@@ -501,7 +317,7 @@ content.innerHTML=`
 <p>9. Stores cold food</p><input id="a9"><p id="r9"></p>
 <p>10. Used to chop food</p><input id="a10"><p id="r10"></p>
 
-<button onclick="checkActivity1()">Submit</button>
+<button onclick="checkActivity1()">go to "answer key"</button>
 `;
 }
 
@@ -534,7 +350,7 @@ content.innerHTML=`
 <input type="radio" name="q5" value="false">False
 <p id="tf5"></p>
 
-<button onclick="checkActivity2()">Submit</button>
+<button onclick="checkActivity2()">go to "answer key"</button>
 `;
 }
 
@@ -553,7 +369,7 @@ content.innerHTML=`
 <p>9. Refrigerator →</p><select id="m9"><option></option><option value="store">Store</option><option value="cook">Cook</option></select><p id="r9"></p>
 <p>10. Cutting Board →</p><select id="m10"><option></option><option value="chop">Chop</option><option value="drink">Drink</option></select><p id="r10"></p>
 
-<button onclick="checkMatch()">Submit</button>
+<button onclick="checkMatch()">go to "aswer key"</button>
 `;
 }
 
@@ -592,7 +408,7 @@ content.innerHTML=`
 10. Italian pasta dish<br>  
 <input id="cw10"><br><br>  
 
-<button onclick="cw()">Submit</button>  
+<button onclick="cw()">go to "answer key"</button>  
 <p id="cwr"></p>  
 `;
 
@@ -642,7 +458,7 @@ content.innerHTML=`
 <input type="radio" name="q10" value="spaghetti">Spaghetti<br>  
 <input type="radio" name="q10" value="sushi">Sushi<br><br>  
 
-<button onclick="quiz()">Submit</button>  
+<button onclick="quiz()">go to "answer key"</button>  
 <p id="qr"></p>  
 `;
 
@@ -682,7 +498,7 @@ content.innerHTML=`
 10. Icecreem<br>  
 <input id="fm10"><br><br>  
 
-<button onclick="fm()">Submit</button>  
+<button onclick="fm()">go to "answer key"</button>  
 <p id="fmr"></p>  
 `;
 
@@ -713,49 +529,556 @@ else if (section === 'reference2') {
             <p>
                 
         `;
-    }
 
+    }
 
 else if (section === 'content') {
         content.innerHTML = `
             <h2> CONTENT<h2>
             <h3><b>
-CHAPTER 1
-<br>
-Lesson 1: Fundamentals of Hospitality and Tourism Industry<br>
-
-In this lesson, students learn how hospitality and tourism work together as an industry. The focus is on how people are served and taken care of, especially guests, visitors, and customers. Students understand the roles of workers in hotels, restaurants, travel services, and tourist attractions. Emphasis is placed on proper behavior, good attitude, and respect when dealing with guests. This lesson also highlights the importance of teamwork and responsibility because hospitality and tourism services require cooperation among workers to give guests a positive experience.
-<br>
-<br>
-
-Lesson 2: Issues, Challenges, Trends, and Innovations in the Hospitality and Tourism Industry<br>
-
-This lesson discusses the different problems and situations faced by the hospitality and tourism industry. Students learn how issues like cleanliness, customer complaints, safety, and environmental care affect services. The lesson also explains how the industry adapts to changes, such as new customer needs and the use of technology. Students are introduced to current trends like online reservations, improved customer service, and eco-friendly practices. The focus is on how innovation helps the industry improve services and overcome challenges.
+<hr><h1 style="color:green; font-family:'Curlz MT'; font-size:200%:"><i>CHAPTER 1: FUNDAMENTALS OF HOSPITALITY AND TOURISM INDUSTRY
 <br><br>
 
-CHAPTER 2<br>
+Lesson 1: Fundamentals of Hospitality and Tourism Industry<br></i></h1>
+ 
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:100%:"><i>LESSON OVERVIEW
+<br></i></h1>
+ 
+This lesson introduces the core structure, purpose, and interdependence of the hospitality and tourism industry—two closely linked sectors that drive economic growth, cultural exchange, and global connectivity.<br>It emphasizes how professionals collaborate to deliver exceptional experiences for guests, visitors, and customers.
+ <br><br>
 
-Lesson 3: Food Preparation and Food Service Industry<br>
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:100%:"><i>COMPLETE DISCUSSION
+<br></i></h1>
+ 
 
-In this lesson, students explore how food is prepared and served in different food service settings. The discussion includes the proper flow of work from preparation to serving food. Students learn the importance of cleanliness, proper handwashing, and safe food handling to avoid food-related problems. The lesson also emphasizes discipline, cooperation, and following rules in the kitchen. Students understand that good food service is not only about taste but also about safety and proper presentation.
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:70%:"><i>1. What is the Hospitality and Tourism Industry?
+<br></i></h1>
+
+- The hospitality industry encompasses businesses that provide services to enhance comfort, convenience, and satisfaction—including hotels, resorts, restaurants, catering services, spas, and event management companies. Its core principle is "service to guests".
 <br><br>
 
-Lesson 4: Food Preparation and Food Service Tools and Equipment<br>
+- The tourism industry focuses on activities related to travel and exploration, such as transportation (airlines, cruise lines, buses), tour operations, travel agencies, and visitor attractions (museums, theme parks, natural landmarks).
+<br><br>
 
-This lesson focuses on the common tools and equipment used in food preparation and food service. Students learn how each tool is used correctly and safely in the kitchen. The discussion includes proper handling to avoid accidents and correct cleaning after use. Students are also taught the importance of storing tools and equipment properly to maintain cleanliness and order in the kitchen. This lesson helps students develop responsibility and awareness when using kitchen tools.<br><br>
+- Together, they form an integrated ecosystem: tourism drives demand for hospitality services, while quality hospitality encourages repeat travel and positive word-of-mouth promotion.
+ <br><br>
 
-CHAPTER 5<br>
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:70%:"><i>2. Key Sectors and Worker Roles
+<br></i></h1>
+ 
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:5%:"><i>- Hotels & Accommodations: 
+<br></i></h1>
 
-Lesson 5: Food Selection, Preparation, and Cooking
+Roles range from front desk agents (who handle check-ins/check-outs and guest inquiries) to housekeeping staff (who maintain clean, safe rooms).
+<br><br> A clean environment is critical to guest satisfaction—"a clean kitchen/establishment is important"
 <br>
-This lesson teaches students how to choose ingredients properly and prepare them before cooking. The discussion includes checking food quality, washing ingredients, and preparing them according to the recipe. Students also learn basic cooking methods and the importance of following correct procedures. Emphasis is given to safety, cleanliness, and proper timing during cooking. The lesson helps students understand that careful preparation leads to better and safer food.
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:5%:"><i>- Restaurants & Food Services: 
+<br></i></h1>
+
+Positions include chefs, servers, and hosts. The term "restaurant" is a key sector here—note the correct spelling.
+<br>
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:5%:"><i>- Travel Services:
+<br></i></h1> 
+
+Travel agents research and book itineraries; tour guides provide context and navigation.
+<br>
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:5%:"><i>- Tourist Attractions:
+<br></i></h1> 
+
+Employees include ticket sellers and customer service representatives who educate and assist visitors.
+ <br>
+
+ 
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:70%:"><i>3. Proper Behavior, Attitude, and Respect
+<br></i></h1>
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:5%:"><i>- Professionalism: 
+<br></i></h1>
+
+Punctuality, neat appearance, and clear communication are essential. For example, front desk agents must speak politely and resolve issues calmly, even during busy periods.
+
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:5%:"><i>- Cultural Sensitivity:
+<br></i></h1> 
+
+Guests come from diverse backgrounds—workers must respect different customs, dietary needs, and communication styles.
+
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:5%:"><i>- Empathy: 
+<br></i></h1>
+
+Understanding guest needs and going the extra mile builds loyalty.
+ <br><br>
+
+ <hr><h1 style="color:black; font-family:'Curlz MT'; font-size:70%:"><i>4. Importance of Teamwork and Responsibility
+<br></i></h1>
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:5%:"><i>- Teamwork:
+<br></i></h1>
+
+ No single role can operate independently. A hotel’s smooth operation requires front desk staff to coordinate with housekeeping to ensure rooms are ready.
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:5%:"><i>- Responsibility:
+<br></i></h1>
+
+ Each worker is accountable for their tasks. A housekeeper who misses cleaning a bathroom risks guest illness or dissatisfaction.
+<br>
+<br>
+<br>
+
+<hr><h1 style="color:green; font-family:'Curlz MT'; font-size:200%:"><i>Lesson 2: Issues, Challenges, Trends, and Innovations in the Hospitality and Tourism Industry
+<br></i></h1>
+ 
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:100%:"><i>LESSON OVERVIEW
+<br></i></h1>
+
+This lesson examines the obstacles the industry faces and how it evolves through adaptation, technology, and sustainable practices. <br><br>It equips learners to identify current problems and anticipate future changes.
+ 
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:100%:"><i>COMPLETE DISCUSSION
+<br></i></h1>
+ 
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:70%:"><i>1. Key Issues and Challenges
+<br></i></h1>
+ 
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:5%:"><i>- Cleanliness & Sanitation: 
+<br></i></h1>
+
+Critical for health and safety—"a clean kitchen is important" Global health crises have highlighted the need for consistent hygiene standards across all touchpoints (e.g., doorknobs, dining surfaces).
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:5%:"><i>- Customer Complaints:
+<br></i></h1>
+
+ Common issues include delayed services or poor quality. <br>
+Unresolved complaints can lead to negative reviews that impact business.
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:5%:"><i>- Safety & Security:
+<br></i></h1>
+
+ Businesses must protect guests from physical harm, theft, and cyber threats. "Food safety is important" as part of overall guest safety.
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:5%:"><i>- Environmental Impact: 
+<br></i></h1>
+
+The industry contributes to carbon emissions and waste—destinations like Boracay have faced degradation due to unregulated tourism.
+ 
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:70%:"><i>2. How the Industry Adapts to Changes
+<br></i></h1>
+ 
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:5%:"><i>- Proactive Policies: 
+<br></i></h1>
+
+Regular audits, mandatory safety training, and crisis management plans are implemented. Hotels use disinfection foggers and contactless check-in to address health concerns.
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:5%:"><i>- Customer Feedback Systems: 
+<br></i></h1>
+
+Tools like surveys help businesses identify issues quickly and make improvements.
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:5%:"><i>- Sustainability Initiatives:
+<br></i></h1>
+
+ Businesses reduce waste by switching to reusable materials and supporting local conservation efforts.
+ 
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:70%:"><i>3. Current Trends and Innovations
+<br></i></h1>
+ 
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:5%:"><i>- Technology Integration:
+<br></i></h1>
+
+ Online reservations, contactless services, and data analytics improve efficiency and guest experience.
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:5%:"><i>- Improved Customer Service:
+<br></i></h1> 
+
+Training programs focus on emotional intelligence and personalized care.
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:5%:"><i>- Eco-Friendly Practices:
+<br></i></h1>
+
+ Green certifications, farm-to-table dining, and waste reduction programs support sustainability.
+ 
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:70%:"><i>4. Focus of Innovation
+<br></i></h1>
+
+Innovations aim to balance efficiency, guest satisfaction, and sustainability. By embracing change, the industry can overcome challenges and build a more resilient future.
+<br>
+<br>
+<br>
+<hr><h1 style="color:green; font-family:'Curlz MT'; font-size:200%:"><i>CHAPTER 2: FOOD PREPARATION AND FOOD SERVICE INDUSTRY
+<br></i></h1>
+
+<hr><h1 style="color:green; font-family:'Curlz MT'; font-size:200%:"><i>Lesson 3: Food Preparation and Food Service Industry
+<br></i></h1>
+ 
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:100%:"><i>LESSON OVERVIEW
+<br></i></h1>
+
+This lesson explores the end-to-end process of food service, from ingredient sourcing to serving guests. It emphasizes standards that ensure safety, quality, and professionalism in all settings.
+ 
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:100%:"><i>COMPLETE DISCUSSION
+<br></i></h1>
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:70%:"><i>1. Food Service Settings
+<br></i></h1>
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:5%:"><i>- Commercial Settings:
+<br></i></h1>
+
+ Restaurants, cafes, food courts, and catering companies—"restaurant" is a key term here.
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:5%:"><i>- Institutional Settings:
+<br></i></h1>
+
+ Schools, hospitals, and corporate cafeterias—focused on nutritious, consistent meals.
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:5%:"><i>- Special Events: 
+<br></i></h1>
+
+Weddings and conferences—require flexible planning to serve large groups.
+ 
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:70%:"><i>2. Proper Flow of Work
+<br></i></h1>
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:100%:"><i>The process follows a sequential structure:
+<br></i></h1>
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:70%:"><i>1. Sourcing & Receiving:
+<br></i></h1> 
+
+Ingredients are purchased from reliable suppliers and inspected for quality.<br><br>
+
+ Examples include wheat,rice,bananas (yellow curved fruit),carrots (orange vegetable), tomatoes, and chicken.
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:70%:"><i>2. Storage:
+<br></i></h1>
+
+ Perishable items are stored at correct temperatures—"refrigerators store cold food"
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:70%:"><i>3. Preparation:
+<br></i></h1> 
+
+Ingredients are washed, cut, or prepped according to recipes 
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:70%:"><i>4. Cooking: 
+<br></i></h1>
+
+Foods are heated to safe internal temperatures—"food safety is important", Pans and stoves are used for cooking 
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:70%:"><i>5. Holding & Serving: 
+<br></i></h1>
+
+Cooked foods are held at safe temperatures. <br>Plates are used to place food, and glasses are used to drink water.
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:70%:"><i>6. Clean-Up & Sanitation:
+<br></i></h1>
+
+ Dishes and surfaces are cleaned—"a clean kitchen is important".
+ 
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:70%:"><i>3. Importance of Cleanliness, Handwashing, and Safe Food Handling
+<br></i></h1>
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:5%:"><i>- Cleanliness: 
+<br></i></h1>
+
+All surfaces and uniforms must be clean to prevent bacteria spread.
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:5%:"><i>- Handwashing: 
+<br></i></h1>
+
+The most effective way to prevent foodborne illnesses—"food safety is important".
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:5%:"><i>- Safe Food Handling: 
+<br></i></h1>
+
+Practices include avoiding cross-contamination and discarding unsafe food. Sushi is fish often eaten raw, so proper sourcing and handling are critical.
+ 
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:100%:"><i>4. Discipline, Cooperation, and Following Rules
+<br></i></h1>
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:5%:"><i>- Discipline:
+<br></i></h1>
+
+ Staff must follow recipes exactly.
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:5%:"><i>- Cooperation:
+<br></i></h1>
+
+ Kitchen teams communicate to ensure orders are prepared on time.
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:5%:"><i>- Following Rules:
+<br></i></h1>
+
+ Local health departments set mandatory regulations—violations can result in fines or closures.
+ 
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:70%:"><i>5. Beyond Taste: Safety and Presentation
+<br></i></h1>
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:5%:"><i>- Safety: 
+<br></i></h1>
+
+Even delicious meals are useless if they make guests sick—"food safety is important"
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:5%:"><i>- Presentation:
+<br></i></h1>
+
+ Visual appeal affects perception—plates and proper plating make dishes more appetizing.
+<br>
+<br>
+<br>
+ 
+<hr><h1 style="color:green; font-family:'Curlz MT'; font-size:200%:"><i>Lesson 4: Food Preparation and Food Service Tools and Equipment
+<br></i></h1>
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:100%:"><i>LESSON OVERVIEW
+<br></i></h1>
+
+This lesson covers the identification, safe use, and maintenance of tools and equipment in food service. It emphasizes responsibility to ensure longevity, safety, and hygiene.
+ 
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:100%:"><i>COMPLETE DISCUSSION
+<br></i></h1>
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:70%:"><i>1. Common Tools and Their Uses
+<br></i></h1>
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:5%:"><i>- Cutting Tools:
+<br></i></h1>
+
+- Knives: Used to cut or chop food.
+<br><br>
+- Cutting Boards: Used with knives to protect surfaces and prevent cross-contamination.
+<br><br>
+- Measuring Tools: Measuring cups, spoons, scales, and thermometers ensure accuracy.
+<br><br>
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:5%:"><i>- Mixing Tools:
+<br></i></h1>
+
+- Spoons: Used to stir food.
 <br><br>
 
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:5%:"><i>- Serving Tools:
+<br></i></h1>
 
-Lesson 6: Conversion of Units of Measurement<br>
+- Forks: Used to pick food.
+<br><br>
 
-In this lesson, students practice using and converting units of measurement needed in food preparation. The discussion focuses on measuring ingredients correctly and converting units when needed in recipes. Students learn why accuracy is important to achieve the desired result in cooking. The lesson also helps students develop basic math skills that are useful in the kitchen. Through this lesson, students understand that correct measurement ensures consistency and prevents mistakes in food preparation. 
-</b></h3>
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:5%:"><i>- Cooking Equipment:
+<br></i></h1>
+
+- Pans: Used to fry or cook food.
+<br><br>
+
+- Pots: Used to boil food
+<br>
+<br>
+<br>
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:200%:"><i>CHAPTER 3: FOOD SELECTION, PREPARATION, AND COOKING<br></i></h1>
+ 
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:200%:"><i>Lesson 5: Food Selection, Preparation, and Cooking
+<br></i></h1>
+
+ <hr><h1 style="color:black; font-family:'Curlz MT'; font-size:100%:"><i>LESSON OVERVIEW
+<br></i></h1>
+ 
+This lesson guides learners through choosing quality ingredients, preparing them safely, and cooking them properly. It emphasizes that careful preparation is key to delicious, safe meals.
+ 
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:100%:"><i>COMPLETE DISCUSSION
+<br></i></h1>
+ 
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:70%:"><i>1. Food Selection: Choosing Quality Ingredients
+<br></i></h1>
+ 
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:5%:"><i>- Fresh Produce: 
+<br></i></h1>
+
+Select firm, brightly colored items—bananas, carrots, tomatoes.
+
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:5%:"><i>- Meats, Poultry, and Seafood:
+<br></i></h1>
+
+ Choose fresh products with no unusual odors—chicken, sushi-grade fish.
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:5%:"><i>- Dairy and Processed Foods:
+<br></i></h1>
+
+ Check expiration dates—cheese (dairy from milk), milk (from cows).
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:5%:"><i>- Dry Goods: 
+<br></i></h1>
+
+Choose items with no damage—wheat (for bread), rice (for rice dishe), pasta (for Italian dishes like spaghetti).
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:5%:"><i>- Beverages & Desserts:
+<br></i></h1>
+
+ Coffee (hot drink from beans), ice cream (sweet frozen dessert).
+ 
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:70%:"><i>2. Preparing Ingredients Properly
+<br></i></h1>
+ 
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:5%:"><i>- Inspection:
+<br></i></h1>
+
+ Check for dirt or spoilage—discard unsafe items.
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:5%:"><i>- Washing:
+<br></i></h1>
+
+ Rinse produce under running water; wash hands before and after handling raw foods.
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:5%:"><i>- Preparation According to Recipe:
+<br></i></h1> 
+
+Read recipes carefully, Gather all ingredients and tools (one place) to avoid mistakes.
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:5%:"><i>- Allergen Management:
+<br></i></h1>
+
+ Identify common allergens and avoid cross-contamination.
+ 
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:70%:"><i>3. Basic Cooking Methods
+<br></i></h1>
+ 
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:5%:"><i>- Dry Heat Cooking: 
+<br></i></h1>
+
+Baking, roasting, grilling, frying—uses pans and stoves.
+
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:5%:"><i>- Moist Heat Cooking:
+<br></i></h1>
+
+ Boiling, steaming, braising—uses pots.
+<br><br>
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:5%:"><i>- Combination Cooking: 
+<br></i></h1>
+
+Uses both dry and moist heat—e.g., frying chicken then simmering in sauce.
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:70%:"><i>4. Importance of Following Correct Procedures
+<br></i></h1>
+ 
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:5%:"><i>- Safety: 
+<br></i></h1>
+
+Cooking to the right temperature kills bacteria—"food safety is important".<br> Sushi requires proper handling to be safe to eat raw.
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:5%:"><i>- Quality: 
+<br></i></h1>
+
+Proper methods preserve flavor and nutrients—overcooking vegetables makes them mushy; undercooking rice makes it hard.
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:5%:"><i>- Consistency:
+<br></i></h1> 
+
+Following recipes ensures meals taste the same every time—critical for restaurants and institutional settings.
+<br>
+<br>
+<br>
+
+<hr><h1 style="color:green; font-family:'Curlz MT'; font-size:200%:"><i>Lesson 6: Conversion of Units of Measurement
+<br></i></h1>
+ 
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:100%:"><i>LESSON OVERVIEW
+<br></i></h1>
+ 
+This lesson teaches how to use and convert units of measurement critical for accurate food preparation. It emphasizes that precision ensures consistent taste, texture, and safety in all dishes—whether for home cooking or commercial food service.
+ 
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:100%:"><i>COMPLETE DISCUSSION
+<br></i></h1>
+ 
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:70%:"><i>1. Why Measurement Matters
+<br></i></h1>
+ 
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:5%:"><i>- Consistency:
+<br></i></h1>
+
+ Using the same measurements every time ensures dishes taste identical—critical for restaurants (e.g., a fast-food chain’s burger sauce must taste the same across all branches) and bakeries (e.g., cake batter must rise uniformly).
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:5%:"><i>- Safety: 
+<br></i></h1>
+
+Incorrect measurements can affect food safety—for example, too little leavening agent in bread can lead to dense loaves that don’t cook through properly, while too much salt can make food inedible or harmful for people with dietary restrictions.
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:5%:"><i>- Cost Management
+<br></i></h1>
+
+ Accurate measurements prevent waste of expensive ingredients (e.g., saffron or premium meat). This ties to the food service industry’s focus on efficiency, which was discussed in Lesson 3.
+ 
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:70%:"><i>2. Common Units of Measurement in Food Preparation
+<br></i></h1>
+ 
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:5%:"><i>- Volume Units:
+<br></i></h1>
+
+Teaspoons (tsp), tablespoons (tbsp), cups, fluid ounces (fl oz), milliliters (mL), liters (L). Used for liquids (water, oil, milk) and dry ingredients that can be leveled (flour, sugar).
+<br><br>
+- Example: 1 tbsp = 3 tsp; 1 cup = 16 tbsp; 1 fl oz ≈ 30 mL.
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:5%:"><i>- Weight Units:
+<br></i></h1> 
+
+Ounces (oz), pounds (lb), grams (g), kilograms (kg). Used for solid ingredients (meat, cheese, fruits/vegetables) where volume measurements can be inconsistent (e.g., a cup of packed flour weighs more than a cup of loose flour).
+<br><br>
+- Example: 1 lb = 16 oz; 1 kg = 1000 g; 1 oz ≈ 28 g.
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:5%:"><i>- Temperature Units:
+<br></i></h1> 
+
+Fahrenheit (°F), Celsius (°C). Used for cooking and storage temperatures—ties to Lesson 3 (safe food storage/cooking) and Lesson 5 (proper cooking methods).
+<br><br>
+- Example: Safe internal temperature for poultry is 165°F (74°C); refrigerators must be set at 40°F (4°C) or below.
+ 
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:70%:"><i>3. How to Convert Units
+<br></i></h1>
+ 
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:5%:"><i>- Volume Conversions: 
+<br></i></h1>
+
+Use standard conversion charts to switch between imperial and metric units. For example:
+<br><br>
+- To convert cups to milliliters: 1 cup ≈ 240 mL → 2 cups = 2 × 240 = 480 mL.
+<br><br>
+- To convert teaspoons to tablespoons: 6 tsp = 6 ÷ 3 = 2 tbsp.
+<br><br>
+- Weight Conversions: Use precise calculations to avoid errors. For example:
+<br><br>
+- To convert pounds to grams: 0.5 lb = 0.5 × 454 = 227 g (since 1 lb ≈ 454 g).
+<br><br>
+- To convert ounces to grams: 4 oz = 4 × 28 = 112 g.
+<br><br>
+- Temperature Conversions: Use formulas to switch between °F and °C:
+<br><br>
+- °C = (°F - 32) × 5/9 → Example: 32°F = 0°C (freezing point of water).
+<br><br>
+- °F = (°C × 9/5) + 32 → Example: 100°C = 212°F (boiling point of water).
+ 
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:70%:"><i>4. Practical Application in the Kitchen
+<br></i></h1>
+ 
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:5%:"><i>- Baking: 
+<br></i></h1>
+
+Requires exact measurements—even a small mistake (e.g., 1 extra tbsp of baking powder) can make a cake collapse or taste bitter. This ties to Lesson 5 (following correct procedures for quality and safety).
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:5%:"><i>- Cooking for Large Groups: 
+<br></i></h1>
+
+When scaling recipes up (e.g., from 4 to 20 servings), conversions ensure ingredients are balanced. For example, a recipe calling for 1 cup of rice for 4 people needs 5 cups for 20 people.
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:5%:"><i>- Dietary Requirements:
+<br></i></h1>
+
+ Accurate measurements help meet specific needs (e.g., a low-sodium diet requires measuring salt precisely). This ties to Lesson 1 (cultural sensitivity and guest care) and Lesson 3 (allergen management).
+ <br><br>
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:70%:"><i>5. Connection to Activities & Assessments
+<br></i></h1>
+ <br><br>
+- While direct questions about units aren’t in the provided activities/assessments, the skill is critical for tasks like measuring ingredients for dishes mentioned in Assessment 1 (e.g., spaghetti, sushi, bread) and Assessment 2 (e.g., rice dishes, pasta). It also supports the focus on accuracy and safety highlighted in Activity 2 – True or False #1 (food safety is important).
             <p>
                 
         `;
@@ -765,20 +1088,42 @@ In this lesson, students practice using and converting units of measurement need
         content.innerHTML = `
             <h2> PERFORMANCE STANDARD</h2>
             <p> <b>
-Chapter 1<br>
-Lesson 1&2 :<br>
+<hr><h1 style="color:green; font-family:'Curlz MT'; font-size:200%:"><i>Chapter 1
+<br></i></h1>
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:70%:"><i>Lesson 1&2 :
+<br></i></h1>
+
 - Explain the meaning and importance of hospitality and tourism.<br>
 - Identify the different sectors of the hospitality and tourism industry.<br>
 - Describe the key characteristics of the industry.<br>
 
 <br>
-Chapter 2<br>
-Lesson 3:The learner prepares and serves food according to industry standards, demonstrating basic skills in food preparation and service.<br>
-Lesson 4:The learner properly uses and maintains tools and equipment for food preparation and service.<br>
+<hr><h1 style="color:green; font-family:'Curlz MT'; font-size:200%:"><i>Chapter 2
+<br></i></h1>
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:70%:"><i>Lesson 3:
+<br></i></h1>
+
+The learner prepares and serves food according to industry standards, demonstrating basic skills in food preparation and service.<br>
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:70%:"><i>Lesson 4:
+<br></i></h1>
+
+The learner properly uses and maintains tools and equipment for food preparation and service.<br>
 <br>
-Chapter 3<br>
-Lesson 5 :The learner selects, prepares, and cooks food according to given standards and recipes..<br>
-Lesson 6:The learner accurately converts units of measurement used in food preparation and service.<br></b
+
+<hr><h1 style="color:green; font-family:'Curlz MT'; font-size:70%:"><i>Chapter 3
+<br></i></h1>
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:70%:"><i>Lesson 5 :
+<br></i></h1>
+
+The learner selects, prepares, and cooks food according to given standards and recipes..<br>
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:70%:"><i>Lesson 6:
+<br></i></h1>
+The learner accurately converts units of measurement used in food preparation and service.<br></b
  </p>
         `;
     }
@@ -787,19 +1132,37 @@ Lesson 6:The learner accurately converts units of measurement used in food prepa
         content.innerHTML = `
             <h2> CONTENT STANDARD</h2>
             <p><b>
-Chapter 1<br>
-Lesson 1 & 2<br>
+<hr><h1 style="color:green; font-family:'Curlz MT'; font-size:200%:"><i>Chapter 1
+<br></i></h1>
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:70%:"><i>Lesson 1 & 2
+<br></i></h1>
+
 -The learner understands the concepts, principles, and practices in the hospitality and tourism industry.<br>
 <br><br>
-Chapter 2<br>
-Lesson 3<br>
+
+<hr><h1 style="color:green; font-family:'Curlz MT'; font-size:200%:"><i>Chapter 2
+<br></i></h1>
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:70%:"><i>Lesson 3
+<br></i></h1>
+
 -The learner understands the principles and practices of food preparation and service in the hospitality industry.<br>
-Lesson 4<br>
+
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:70%:"><i>Lesson 4
+<br></i></h1>
+
 -The learner understands the use, maintenance, and safety of tools and equipment in food preparation and service.<br>
 <br>
 <br>
-Chapter 3<br>
-Lesson 5&6<br>
+
+<hr><h1 style="color:green; font-family:'Curlz MT'; font-size:200%:"><i>Chapter 3
+<br></i></h1>
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:70%:"><i>Lesson 5&6
+<br></i></h1>
+
 - The learner understands the principles of food selection, preparation, and cooking techniques.</b></p>
         `;
     }
@@ -809,14 +1172,23 @@ else if (section === 'competencies') {
             <h2>LEARNING COMPETENCIES</h2>
             <p><b>
 
-Chapter 1  <br>
-Lesson 1 & 2: <br>
+<hr><h1 style="color:green; font-family:'Curlz MT'; font-size:200%:"><i>Chapter 1 
+<br></i></h1>
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:70%:"><i>Lesson 1 & 2: 
+<br></i></h1>
+
     - Discuss the meaning and importance of hospitality and tourism.<br>
     - Identify and describe the different sectors of the hospitality and tourism industry.<br>
    - Explain the key characteristics of the industry.<br>
 <br>
-Chapter 2<br>
-Lesson 3:<br>
+
+<hr><h1 style="color:green; font-family:'Curlz MT'; font-size:200%:"><i>Chapter 2
+<br></i></h1>
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:70%:"><i>Lesson 3:
+<br></i></h1>
+
   - Identify and describe different types of food service methods.<br>
    - Demonstrate basic food preparation techniques.<br>
 Lesson 4:   <br>
@@ -825,11 +1197,20 @@ Lesson 4:   <br>
       - Demonstrate safe handling of tools and equipment.<br>
 
 <br>
-Chapter 3<br>
-Lesson 5: <br>Apply principles of food selection and preparation.<br>
+
+<hr><h1 style="color:green; font-family:'Curlz MT'; font-size:200%:"><i>Chapter 3
+<br></i></h1>
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:70%:"><i>Lesson 5:
+<br></i></h1>
+
+ <br>Apply principles of food selection and preparation.<br>
         - Prepare ingredients and cook food using appropriate methods.<br>
         - Demonstrate proper cooking techniques and safety practices.<br>
-Lesson 6:<br>
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:100%:"><i>Lesson 6:
+<br></i></h1>
+
 - Explain the importance of accurate measurement in food preparation.<br>
   - Convert units of measurement (e.g., grams to kilograms, cups to milliliters<br>
     - Apply conversion skills in practical food preparation tasks.</b></p>
@@ -840,23 +1221,40 @@ else if (section === 'objectives') {
         content.innerHTML = `
             <h2>OBJECTIVE</h2>
             <p><b>
-Chapter 1<br>
-Lesson 1 &2: <br>  
+<hr><h1 style="color:green; font-family:'Curlz MT'; font-size:200%:"><i>Chapter 1
+<br></i></h1>
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:70%:"><i>Lesson 1 &2: 
+<br></i></h1>
+  
  - Explain the meaning and importance of hospitality and tourism.<br>
         - Identify the different sectors of the hospitality and tourism industry.<br>
         - Describe the key characteristics of the industry.
 <br>
 <br>
-Chapter 2<br>
-Lesson 3: <br>    
+
+<hr><h1 style="color:green; font-family:'Curlz MT'; font-size:200%:"><i>Chapter 2
+<br></i></h1>
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:70%:"><i>Lesson 3: 
+<br></i></h1>
+  
  - Explain the importance of food preparation and service in the hospitality industry.<br>
   - Identify different types of food service methods.<br>
   - Demonstrate basic food preparation techniques.<br>
-Lesson 4:  <br>
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:70%:"><i>Lesson 4:  
+<br></i></h1>
+
   - Identify and classify tools and equipment used in food preparation and service. <br>
  -Explain the proper use and maintenance of food service equipment. <br>  - Demonstrate safe handling of tools and equipment.<br><br>
-Chapter 3<br>
-Lesson 5 & 6: <br>
+
+<hr><h1 style="color:green; font-family:'Curlz MT'; font-size:200%:"><i>Chapter 3
+<br></i></h1>
+
+<hr><h1 style="color:black; font-family:'Curlz MT'; font-size:70%:"><i>Lesson 5 & 6: 
+<br></i></h1>
+
 - Explain the importance of accurate measurement in food preparation.<br>
   - Convert units of measurement (e.g., grams to kilograms, cups to milliliters).<br>
   - Apply conversion skills in practical food preparation tasks.</b></p>
